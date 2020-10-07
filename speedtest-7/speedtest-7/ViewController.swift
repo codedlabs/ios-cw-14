@@ -21,6 +21,9 @@ class ViewController: UIViewController {
         if nameLabel.text!.count >= 2 {
         performSegue(withIdentifier: "nextPage", sender: name)
     }
+        else{
+            print("لا تستعبط")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
