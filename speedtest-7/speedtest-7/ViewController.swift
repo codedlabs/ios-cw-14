@@ -10,14 +10,27 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var name: UITextField!
-    @IBAction func nextBtn(_ sender: Any) {
-        performSegue(withIdentifier: "nextPage", sender: nil)
-    }
+    @IBOutlet weak var nameLabel: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    @IBAction func nextBtn(_ sender: Any) {
+        let name = nameLabel.text
+        if nameLabel.text!.count >= 2 {
+        performSegue(withIdentifier: "nextPage", sender: name)
+    }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "nextPage" {
+            let name = sender as! String
+            let vc = segue.destination as! DetailsVC
+            vc.names = name
+            
+        }
+    }
     // Hint: `performSegue` is the way
     
 
